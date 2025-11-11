@@ -2,12 +2,22 @@
 /* 1. RESET Y VARIABLES (Custom Properties) */
 /* ----------------------------------- */
 :root {
-    /* Colores corporativos de ELECTRIPARTES */
-    --color-primary: #D93B3B; /* Rojo intenso/Corporativo */
-    --color-secondary: #FF6600; /* Naranja para énfasis */
+    /* Colores corporativos de ELECTRIPARTES (Tus colores) */
+    --color-primary: #FF7F15; /* Naranja/Ámbar (Tu color principal) */
+    --color-secondary: #E36400; /* Naranja más oscuro para Hover */
     --color-dark: #333333; /* Texto principal oscuro */
-    --color-light: #F4F4F4; /* Fondos claros */
-    --color-white: #ffffff;
+    --color-light: #F8F8F8; /* Fondos claros */
+    --color-white: #ffffff; /* Tu color de texto sobre fondo oscuro */
+
+    /* Tipografía (Puedes cambiarla a tu gusto) */
+    --font-sans: 'Arial', sans-serif;
+    --font-heading: 'Helvetica Neue', sans-serif;
+
+    /* Espaciado */
+    --spacing-base: 1rem;
+    --spacing-large: 2rem;
+}
+    
 
     /* Tipografía */
     --font-sans: 'Arial', sans-serif;
@@ -325,4 +335,5 @@ section {
         font-size: 4rem;
     }
 }
+
 
