@@ -1,0 +1,328 @@
+/* ----------------------------------- */
+/* 1. RESET Y VARIABLES (Custom Properties) */
+/* ----------------------------------- */
+:root {
+    /* Colores corporativos de ELECTRIPARTES */
+    --color-primary: #D93B3B; /* Rojo intenso/Corporativo */
+    --color-secondary: #FF6600; /* Naranja para énfasis */
+    --color-dark: #333333; /* Texto principal oscuro */
+    --color-light: #F4F4F4; /* Fondos claros */
+    --color-white: #ffffff;
+
+    /* Tipografía */
+    --font-sans: 'Arial', sans-serif;
+    --font-heading: 'Helvetica Neue', sans-serif;
+
+    /* Espaciado */
+    --spacing-base: 1rem;
+    --spacing-large: 2rem;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-base);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ----------------------------------- */
+/* 2. TIPOGRAFÍA Y BOTONES */
+/* ----------------------------------- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-base);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem; }
+h3 { font-size: 1.5rem; }
+
+/* Botones genéricos */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, opacity 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: #A92D2D; /* Rojo más oscuro */
+}
+
+.btn-secondary {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+/* ----------------------------------- */
+/* 3. HEADER (Mobile-First) */
+/* ----------------------------------- */
+.header {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex; /* Por defecto en móvil, lo ocultamos y lo mostramos con JS */
+}
+
+.nav a {
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+}
+
+/* Menú Toggle para Móvil */
+.menu-toggle {
+    display: block; /* Visible por defecto en móvil */
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-white);
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+.nav {
+    /* Ocultar el menú en móviles por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-dark);
+    display: none; 
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.nav.active {
+    display: block;
+}
+
+.nav ul {
+    flex-direction: column;
+}
+
+.nav li {
+    margin: 0.5rem 0;
+}
+
+/* ----------------------------------- */
+/* 4. SECCIONES GENERALES */
+/* ----------------------------------- */
+section {
+    padding: var(--spacing-large) 0;
+}
+
+.hero {
+    background: var(--color-white);
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero h1 {
+    color: var(--color-primary);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero h1 strong {
+    color: var(--color-dark);
+}
+
+.hero-image {
+    margin-top: var(--spacing-large);
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-products {
+    background-color: var(--color-light);
+}
+
+.product-grid {
+    display: flex;
+    flex-direction: column; /* Columna en móvil */
+    gap: var(--spacing-large);
+    margin-top: var(--spacing-large);
+}
+
+.product-card {
+    background-color: var(--color-white);
+    padding: var(--spacing-large);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.services {
+    background-color: #EFEFEF;
+    text-align: center;
+}
+
+.services ul {
+    list-style: none;
+    margin: var(--spacing-base) 0 var(--spacing-large) 0;
+    padding: 0;
+}
+
+.services li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #ccc;
+    font-size: 1.1rem;
+}
+
+.contact {
+    background-color: var(--color-white);
+}
+
+.contact-form label {
+    display: block;
+    margin-top: var(--spacing-base);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: var(--spacing-base);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-sans);
+}
+
+.contact-form button {
+    width: 100%;
+}
+
+/* ----------------------------------- */
+/* 5. FOOTER */
+/* ----------------------------------- */
+.footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ----------------------------------- */
+/* 6. MEDIA QUERIES (Desktop) */
+/* ----------------------------------- */
+@media (min-width: 768px) {
+    /* HEADER: Mostrar menú en escritorio */
+    .menu-toggle {
+        display: none;
+    }
+    
+    .nav {
+        position: static;
+        display: block;
+        padding: 0;
+        width: auto;
+    }
+
+    .nav ul {
+        flex-direction: row;
+    }
+
+    /* PRODUCTOS: Grid en escritorio */
+    .product-grid {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .product-card {
+        flex: 1;
+        margin: 0 1rem;
+    }
+    
+    /* CONTACTO: Formulario más estrecho */
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* HERO: Ajuste de tamaño */
+    .hero h1 {
+        font-size: 4rem;
+    }
+}
+
