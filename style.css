@@ -169,23 +169,63 @@ h1, h2, h3 {
     color: var(--color-light); 
 }
 
-/* 5. SECCIÓN MARCAS */
+/* 5. SECCIÓN CARRUSEL DE MARCAS (NUEVOS ESTILOS) */
 .marcas {
     padding: var(--spacing-large) 0;
     text-align: center;
+    background-color: var(--color-white);
 }
 
-.marcas .full-width-image {
-    width: 100%;
-    height: auto;
+.carousel-container {
+    position: relative;
+    overflow: hidden; /* Esto oculta las imágenes que no se están viendo */
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 0 auto;
 }
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Transición suave al cambiar de slide */
+}
+
+.carousel-slide {
+    width: 100%; /* Cada imagen toma el 100% del contenedor */
+    height: auto;
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    display: block;
+}
+
+/* Estilos de los puntos de navegación (Dots) */
+.carousel-dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 20; /* Asegura que los dots estén sobre la imagen */
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Puntos transparentes claros */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-dot.active {
+    background-color: var(--color-primary); /* Punto activo Naranja */
+}
+
 
 /* 6. SECCIÓN PRODUCTOS Y CATEGORÍAS */
 .product-categories {
     padding: var(--spacing-large) 0;
-    background-color: var(--color-white);
+    background-color: var(--color-light); /* Fondo Gris Suave */
     text-align: center;
 }
 
@@ -195,7 +235,7 @@ h1, h2, h3 {
     gap: 20px;
     margin-top: var(--spacing-large);
 }
-
+/* ... (El resto de estilos de categorías es el mismo) ... */
 .category-card {
     position: relative;
     overflow: hidden;
@@ -250,7 +290,7 @@ h1, h2, h3 {
 /* 7. SECCIÓN NOSOTROS */
 .about-us {
     padding: var(--spacing-extra-large) 0;
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     text-align: center;
 }
 
@@ -289,6 +329,7 @@ h1, h2, h3 {
 .contact-info {
     padding: var(--spacing-large) 0;
     text-align: center;
+    background-color: var(--color-light); /* Fondo Gris Suave */
 }
 
 .contact-info h2 {
@@ -310,7 +351,7 @@ h1, h2, h3 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
-    border-bottom: 1px solid var(--color-light);
+    border-bottom: 1px solid #ccc;
 }
 
 .asesor-item p {
@@ -346,6 +387,7 @@ h1, h2, h3 {
     padding: var(--spacing-large);
     max-width: 600px;
     margin: 3rem auto;
+    background-color: var(--color-white);
 }
 
 .form-content h3 {
