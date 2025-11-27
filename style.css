@@ -1,127 +1,523 @@
-/* WebGenius Pro: Estilos de la Web - Mobile-First */
+/* 1. VARIABLES CSS (CUSTOM PROPERTIES) */
+:root {
+    --color-primary: #ff6600; /* Naranja de tu logo */
+    --color-secondary: #2c3e50; /* Azul oscuro para texto principal */
+    --color-accent: #2ecc71; /* Verde para destacar/WhatsApp */
+    --color-light: #ffffff;
+    --color-dark: #333333;
+    --color-gray-bg: #f4f4f4;
+    
+    --font-main: 'Arial', sans-serif;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+}
 
-/* RESET BASICO Y FUENTES */
+/* 2. BASE & RESET */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
 }
 
-/* --------------------------------------------------------------------- */
-/* ESTILO DE LA CABECERA (HEADER) */
-/* --------------------------------------------------------------------- */
-
-.main-header {
-    display: flex; 
-    justify-content: space-between; /* Espacia los elementos: Logo | Menú | Botón */
-    align-items: center; 
-    background-color: #FF6600; /* Fondo Naranja */
-    padding: 10px 5%; 
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-light);
 }
 
-/* Logo */
-.logo-link img {
-    max-height: 40px; 
-    width: auto;
-}
-
-/* Navegación */
-.main-nav ul {
-    list-style: none;
-    display: flex; 
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav li a {
-    color: white;
+a {
     text-decoration: none;
-    padding: 0 15px;
+    color: var(--color-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--color-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* 3. LAYOUT GENERAL */
+section {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* 4. HEADER Y NAVEGACIÓN */
+.main-header {
+    background-color: var(--color-primary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+}
+
+.logo {
+    height: 40px; /* Ajusta el tamaño del logo */
+    object-fit: contain;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: var(--color-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block; /* Visible en móvil */
+}
+
+.nav-menu {
+    list-style: none;
+    display: none; /* Oculto por defecto en móvil */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-secondary);
+    padding: var(--spacing-sm) 0;
+    text-align: center;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-menu li a {
+    color: var(--color-light);
+    padding: var(--spacing-sm) 0;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cta-button {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 5px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+}
+
+/* 5. CARRUSEL DE MARCAS */
+.hero-section {
+    padding: 0; /* Quitamos padding para que el carrusel ocupe todo el ancho */
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 350px; /* Altura fija para el carrusel en móviles */
+    object-fit: cover;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: var(--color-primary);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-light);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: 5px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.carousel-btn:hover {
+    opacity: 1;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* 6. SECCIÓN PRODUCTOS - CATEGORÍAS */
+.categories-section {
+    background-color: var(--color-gray-bg);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.category-card {
+    background-color: var(--color-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: var(--spacing-sm);
+}
+
+.category-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-sm);
+}
+
+.category-card h3 {
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn-ir {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 8px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-ir:hover {
+    background-color: var(--color-primary);
+}
+
+/* 7. ASESORES DE VENTA */
+.sales-advisors-section {
+    text-align: center;
+}
+
+.advisors-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.advisor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.advisor-name {
+    font-weight: bold;
+    color: var(--color-secondary);
+    font-size: 1.1rem;
+}
+
+.contact-btn {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.contact-btn .fab.fa-whatsapp {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
+
+.contact-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.contact-btn:hover .fab.fa-whatsapp {
+    color: var(--color-light);
+}
+
+/* 8. ACERCA DE NOSOTROS */
+.about-us-section {
+    background-color: var(--color-gray-bg);
+}
+
+.about-content p {
+    margin-bottom: var(--spacing-sm);
+    text-align: justify;
+}
+
+.about-content .highlight {
+    font-weight: bold;
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+.office-images {
+    margin-top: var(--spacing-md);
+    text-align: center;
+}
+
+.office-images h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary);
+}
+
+.office-images img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: var(--spacing-sm);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 9. CONTACTO Y UBICACIÓN */
+.contact-location-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+.contact-info {
+    padding: var(--spacing-sm);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: var(--color-light);
+}
+
+.contact-info h2, .contact-info p, .contact-info address {
+    margin-bottom: var(--spacing-xs);
+}
+
+.social-media {
+    margin-top: var(--spacing-md);
+}
+
+.social-media a {
+    font-size: 1.5rem;
+    margin-right: var(--spacing-sm);
+    color: var(--color-secondary);
     transition: color 0.3s;
 }
 
-/* Botón CTA (Solicita tu cotización) */
-.cta-header-button {
-    background-color: white;
-    color: #FF6600; 
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+.social-media a:hover {
+    color: var(--color-primary);
 }
 
-
-/* --------------------------------------------------------------------- */
-/* ESTILO DE LA SECCIÓN HERO (PORTADA) */
-/* --------------------------------------------------------------------- */
-
-.hero-section {
-    background-color: #777; /* Fondo gris */
-    text-align: center;
-    padding: 80px 5%;
-    color: white;
-}
-
-.hero-section h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.whatsapp-cta-button {
-    display: inline-block;
-    background-color: #FF6600; 
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
+.form-container, .map-container {
+    padding: var(--spacing-sm);
+    border: 1px solid #ddd;
     border-radius: 8px;
-    font-weight: bold;
-    margin-top: 30px;
-    transition: background-color 0.3s;
+    background-color: var(--color-light);
 }
 
-.whatsapp-cta-button img {
-    height: 20px;
-    margin-right: 10px;
-    vertical-align: middle;
+.main-form input[type="text"],
+.main-form input[type="email"],
+.main-form input[type="tel"],
+.main-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-main);
 }
 
+.main-form textarea {
+    resize: vertical;
+}
 
-/* --------------------------------------------------------------------- */
-/* MOBILE-FIRST: Adaptaciones para Pantallas Pequeñas */
-/* --------------------------------------------------------------------- */
+.main-form .cta-button {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+}
 
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column; /* Apila los elementos verticalmente */
-        align-items: flex-start;
+.map-container {
+    margin-top: var(--spacing-md);
+    padding: 0;
+    border: none;
+}
+
+.map-container h3 {
+    padding: var(--spacing-sm);
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* 10. FOOTER */
+.main-footer {
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+    text-align: center;
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+}
+
+/* 11. MEDIA QUERIES (ADAPTACIÓN A ESCRITORIO) */
+@media (min-width: 768px) {
+    
+    section {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .nav-toggle {
+        display: none; /* Ocultar el botón de menú en escritorio */
+    }
+    
+    .nav-menu {
+        position: static;
+        flex-direction: row;
+        display: flex;
+        background: none;
+        padding: 0;
+        margin-right: var(--spacing-md);
+    }
+    
+    .nav-menu li a {
+        color: var(--color-light);
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-menu li a:hover {
+        background-color: transparent;
+        color: var(--color-secondary);
+    }
+    
+    .header-content {
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 
-    .main-nav {
-        width: 100%;
-        margin: 10px 0;
+    /* Carrusel */
+    .carousel-slide img {
+        height: 500px; /* Mayor altura en escritorio */
     }
 
-    .main-nav ul {
-        flex-direction: column; /* Apila los enlaces del menú */
-        text-align: left;
+    /* Categorías */
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
     }
 
-    .main-nav li {
-        margin: 5px 0;
+    /* Asesores */
+    .advisors-list {
+        flex-direction: row;
+        justify-content: center;
     }
 
-    .cta-header-button {
-        width: 100%; /* Botón CTA en ancho completo */
-        text-align: center;
-        margin-top: 10px;
+    /* Nosotros */
+    .office-images {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    .office-images img {
+        height: 300px;
     }
 
-    .hero-section h1 {
-        font-size: 2em; 
+    /* Contacto y Mapa */
+    .contact-location-section {
+        grid-template-columns: 1fr 2fr; /* Columna de info y columna de formulario/mapa */
+        align-items: start;
+    }
+    
+    .contact-form-map {
+        display: grid;
+        grid-template-columns: 1fr; /* Formulario arriba, Mapa abajo */
+        gap: var(--spacing-md);
+    }
+
+    .map-container {
+        margin-top: 0;
     }
 }
