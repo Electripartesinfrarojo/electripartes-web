@@ -1,55 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------
-    // LÓGICA DEL CARRUSEL AUTOMÁTICO
-    // ----------------------------------------------------
-    const track = document.querySelector('.carousel-track');
-    if (!track) return; // Salir si no encuentra el carrusel
+    
+    // 1. FUNCIONALIDAD DEL MENÚ MOBILE 🍔
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-    const slides = Array.from(track.children);
-    const dotsContainer = document.querySelector('.carousel-dots-container');
-    const slideCount = slides.length;
-    let currentSlide = 0;
-
-    // 1. Crear los puntos de navegación (dots)
-    slides.forEach((slide, index) => {
-        const dot = document.createElement('span');
-        dot.classList.add('carousel-dot');
-        if (index === 0) {
-            dot.classList.add('active');
-        }
-        // Permite la navegación manual haciendo clic en los puntos
-        dot.addEventListener('click', () => moveToSlide(index));
-        dotsContainer.appendChild(dot);
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        const isExpanded = navMenu.classList.contains('active');
+        navToggle.setAttribute('aria-expanded', isExpanded);
+        
+        // Cambiar el ícono del botón
+        const icon = navToggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
     });
 
-    const dots = Array.from(dotsContainer.children);
+    // 2. FUNCIONALIDAD DEL CARRUSEL 🖼️
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselDots = document.getElementById('carouselDots');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    const prevButton = document.querySelector('.carousel-btn.prev');
+    const nextButton = document.querySelector('.carousel-btn.next');
+    let currentSlide = 0;
+    let autoSlideInterval;
 
-    // Función principal para mover el carrusel
+    // Crear los puntos (dots)
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) {
+            dot.classList.add('active');
+        }
+        dot.addEventListener('click', () => {
+            moveToSlide(i);
+        });
+        carouselDots.appendChild(dot);
+    }
+
+    const dots = document.querySelectorAll('.dot');
+
+    // Función para mover el carrusel
     const moveToSlide = (index) => {
         if (index < 0) {
-            index = slideCount - 1; // Volver a la última
-        } else if (index >= slideCount) {
-            index = 0; // Volver a la primera
+            index = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            index = 0;
         }
-        
-        currentSlide = index;
-        
-        // Calcular la distancia de desplazamiento (porcentaje)
-        const amountToMove = currentSlide * 100;
-        track.style.transform = `translateX(-${amountToMove}%)`;
 
-        // Actualizar el estado activo de los puntos
+        currentSlide = index;
+        const offset = -currentSlide * 100;
+        carouselTrack.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar los puntos
         dots.forEach(dot => dot.classList.remove('active'));
         dots[currentSlide].classList.add('active');
+        
+        // Reiniciar el temporizador al mover manualmente
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
     };
 
-    // Función para avanzar automáticamente
-    const autoAdvance = () => {
-        let nextSlide = currentSlide + 1;
-        moveToSlide(nextSlide);
+    // Botones de navegación
+    prevButton.addEventListener('click', () => moveToSlide(currentSlide - 1));
+    nextButton.addEventListener('click', () => moveToSlide(currentSlide + 1));
+    
+    // Auto-avance
+    const startAutoSlide = () => {
+        autoSlideInterval = setInterval(() => {
+            moveToSlide(currentSlide + 1);
+        }, 5000); // Cambia de slide cada 5 segundos
     };
 
-    // Iniciar el carrusel: cambia la imagen cada 3000 milisegundos (3 segundos)
-    setInterval(autoAdvance, 3000); 
-
+    // Iniciar el auto-avance
+    startAutoSlide();
 });
