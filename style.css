@@ -234,19 +234,15 @@ section {
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding-bottom: var(--spacing-sm);
-    /* Modificado: Quitamos max-width aquí para que se adapte mejor al grid en móvil */
-    /* Lo centramos usando las propiedades del grid en móvil, si es necesario, 
-       o con un max-width y margin:auto en el grid si solo hay una columna */
-    max-width: 400px; /* Un tamaño razonable para la tarjeta en móvil, será sobrescrito en escritorio */
+    max-width: 400px; 
     margin: 0 auto;
 }
 
 .category-card img {
-    /* AJUSTADO: Usaremos el padding-top para mantener la proporción 2:3 */
     width: 100%; 
-    height: 0; /* La altura será definida por el padding-top */
-    padding-top: 150%; /* 1000px alto / 667px ancho = 1.5 -> 150% */
-    object-fit: cover; /* Cambiado de nuevo a cover para llenar el espacio */
+    height: 0; 
+    padding-top: 150%; 
+    object-fit: cover; 
     margin-bottom: var(--spacing-sm);
 }
 
@@ -323,7 +319,7 @@ section {
     color: var(--color-light);
 }
 
-/* 8. ACERCA DE NOSOTROS */
+/* 8. ACERCA DE NOSOTROS - INSTALACIONES AJUSTADAS */
 .about-us-section {
     background-color: var(--color-gray-bg);
 }
@@ -351,7 +347,8 @@ section {
 
 .office-images img {
     width: 100%;
-    height: 250px;
+    /* Altura fija de 300px para todas las vistas */
+    height: 300px; 
     object-fit: cover;
     margin-bottom: var(--spacing-sm);
     border-radius: 8px;
@@ -491,29 +488,28 @@ section {
 
     /* Categorías */
     .categories-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas en escritorio */
+        grid-template-columns: repeat(4, 1fr); 
         justify-items: center; 
     }
 
     .category-card {
         margin: 0; 
-        max-width: none; /* Quitamos max-width de la tarjeta para que el grid lo maneje */
+        max-width: none; 
     }
 
     .category-card img {
-        /* Para asegurar que cada imagen se ajuste al ancho de 667px / 1000px de la imagen original */
-        max-width: 100%; /* Asegura que no desborde si el contenedor es más pequeño */
-        height: auto; /* Dejar que la altura se ajuste automáticamente */
-        padding-top: 0; /* Desactivar el truco del padding-top en escritorio para mejor control */
+        max-width: 100%; 
+        height: auto; 
+        padding-top: 0;
     }
-
+    
     /* Asesores */
     .advisors-list {
         flex-direction: row;
         justify-content: center;
     }
 
-    /* Nosotros */
+    /* Nosotros - Instalaciones */
     .office-images {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -521,7 +517,8 @@ section {
     }
     
     .office-images img {
-        height: 300px;
+        /* Mantenemos 300px fijo en escritorio */
+        height: 300px; 
     }
 
     /* Contacto y Mapa */
