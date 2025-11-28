@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startAutoSlide = () => {
         autoSlideInterval = setInterval(() => {
             moveToSlide(currentSlide + 1);
-        }, 3000); // Velocidad: 3 segundos (3000ms)
+        }, 3000); // Velocidad de 3 segundos
     };
 
     // Iniciar el auto-avance
