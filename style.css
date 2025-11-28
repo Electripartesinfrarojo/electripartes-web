@@ -1,8 +1,8 @@
 /* 1. VARIABLES CSS (CUSTOM PROPERTIES) */
 :root {
-    --color-primary: #ff6600; /* Naranja de tu logo */
-    --color-secondary: #2c3e50; /* Azul oscuro para texto principal */
-    --color-accent: #2ecc71; /* Verde para destacar/WhatsApp */
+    --color-primary: #ff6600; 
+    --color-secondary: #2c3e50; 
+    --color-accent: #2ecc71; 
     --color-light: #ffffff;
     --color-dark: #333333;
     --color-gray-bg: #f4f4f4;
@@ -83,7 +83,7 @@ section {
 }
 
 .logo {
-    height: 40px; /* Ajusta el tamaño del logo */
+    height: 40px; 
     object-fit: contain;
 }
 
@@ -93,12 +93,12 @@ section {
     color: var(--color-light);
     font-size: 1.5rem;
     cursor: pointer;
-    display: block; /* Visible en móvil */
+    display: block; 
 }
 
 .nav-menu {
     list-style: none;
-    display: none; /* Oculto por defecto en móvil */
+    display: none; 
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -139,7 +139,7 @@ section {
     color: var(--color-light);
 }
 
-/* 5. CARRUSEL DE MARCAS */
+/* 5. CARRUSEL DE MARCAS (1197px ancho, 358px alto) */
 .hero-section {
     padding: 0; 
     position: relative;
@@ -150,8 +150,7 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
-    /* ANCHO MODIFICADO: Máximo 1197px, centrado */
-    max-width: 1197px; 
+    max-width: 1197px; /* ANCHO MÁXIMO DEL CARRUSEL */
     margin: 0 auto;
 }
 
@@ -167,8 +166,7 @@ section {
 
 .carousel-slide img {
     width: 100%;
-    /* ALTURA MODIFICADA: 358px fijos para todos los dispositivos */
-    height: 358px; 
+    height: 358px; /* ALTURA FIJA DEL CARRUSEL */
     object-fit: cover;
 }
 
@@ -218,14 +216,14 @@ section {
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* 6. SECCIÓN PRODUCTOS - CATEGORÍAS */
+/* 6. SECCIÓN PRODUCTOS - CATEGORÍAS (444px ancho, 667px alto) */
 .categories-section {
     background-color: var(--color-gray-bg);
 }
 
 .categories-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna en móvil */
+    grid-template-columns: 1fr; 
     gap: var(--spacing-md);
     text-align: center;
 }
@@ -236,11 +234,16 @@ section {
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding-bottom: var(--spacing-sm);
+    /* ANCHO MÁXIMO DE LA TARJETA COMPLETA */
+    max-width: 444px; 
+    margin: 0 auto; 
 }
 
 .category-card img {
-    height: 200px;
-    width: 100%;
+    /* DIMENSIONES DE IMAGEN */
+    width: 100%; 
+    max-width: 444px; 
+    height: 667px; /* ALTURA FIJA DE IMAGEN */
     object-fit: cover;
     margin-bottom: var(--spacing-sm);
 }
@@ -456,7 +459,7 @@ section {
     }
     
     .nav-toggle {
-        display: none; /* Ocultar el botón de menú en escritorio */
+        display: none; 
     }
     
     .nav-menu {
@@ -482,13 +485,18 @@ section {
         padding: var(--spacing-sm) var(--spacing-md);
     }
 
-    /* Carrusel - La altura es fija en 358px en la sección 5 */
+    /* Carrusel - Altura fija en 358px en la sección 5 */
 
     /* Categorías */
     .categories-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas en escritorio */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        justify-items: center; 
     }
 
+    .category-card {
+        margin: 0; 
+    }
+    
     /* Asesores */
     .advisors-list {
         flex-direction: row;
@@ -508,13 +516,13 @@ section {
 
     /* Contacto y Mapa */
     .contact-location-section {
-        grid-template-columns: 1fr 2fr; /* Columna de info y columna de formulario/mapa */
+        grid-template-columns: 1fr 2fr; 
         align-items: start;
     }
     
     .contact-form-map {
         display: grid;
-        grid-template-columns: 1fr; /* Formulario arriba, Mapa abajo */
+        grid-template-columns: 1fr; 
         gap: var(--spacing-md);
     }
 
