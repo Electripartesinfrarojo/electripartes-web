@@ -141,7 +141,7 @@ section {
 
 /* 5. CARRUSEL DE MARCAS */
 .hero-section {
-    padding: 0; /* Quitamos padding para que el carrusel ocupe todo el ancho */
+    padding: 0; 
     position: relative;
     overflow: hidden;
 }
@@ -150,6 +150,9 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
+    /* ANCHO MODIFICADO: Máximo 1197px, centrado */
+    max-width: 1197px; 
+    margin: 0 auto;
 }
 
 .carousel-track {
@@ -164,7 +167,8 @@ section {
 
 .carousel-slide img {
     width: 100%;
-    height: 350px; /* Altura fija para el carrusel en móviles */
+    /* ALTURA MODIFICADA: 358px fijos para todos los dispositivos */
+    height: 358px; 
     object-fit: cover;
 }
 
@@ -478,10 +482,7 @@ section {
         padding: var(--spacing-sm) var(--spacing-md);
     }
 
-    /* Carrusel */
-    .carousel-slide img {
-        height: 500px; /* Mayor altura en escritorio */
-    }
+    /* Carrusel - La altura es fija en 358px en la sección 5 */
 
     /* Categorías */
     .categories-grid {
