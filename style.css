@@ -320,40 +320,17 @@ section {
 }
 
 /* 8. ACERCA DE NOSOTROS - INSTALACIONES AJUSTADAS */
-.about-us-section {
-    background-color: var(--color-gray-bg);
-}
-
-.about-content p {
-    margin-bottom: var(--spacing-sm);
-    text-align: justify;
-}
-
-.about-content .highlight {
-    font-weight: bold;
-    color: var(--color-primary);
-    font-style: italic;
-}
-
-.office-images {
-    margin-top: var(--spacing-md);
-    text-align: center;
-}
-
-.office-images h3 {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-secondary);
-}
-
+/* ... código previo de la sección 8 ... */
 .office-images img {
     width: 100%;
     /* Altura fija de 300px para todas las vistas */
-    height: 300px; 
+    height: 300px; /* Aquí es donde ajustamos la altura a 300px */
     object-fit: cover;
     margin-bottom: var(--spacing-sm);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+/* ... el resto del archivo CSS ... */
 
 /* 9. CONTACTO Y UBICACIÓN */
 .contact-location-section {
@@ -537,3 +514,4 @@ section {
         margin-top: 0;
     }
 }
+
