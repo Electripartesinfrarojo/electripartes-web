@@ -150,7 +150,7 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
-    max-width: 1197px; /* ANCHO MÁXIMO DEL CARRUSEL */
+    max-width: 1197px; 
     margin: 0 auto;
 }
 
@@ -166,7 +166,7 @@ section {
 
 .carousel-slide img {
     width: 100%;
-    height: 358px; /* ALTURA FIJA DEL CARRUSEL */
+    height: 358px; 
     object-fit: cover;
 }
 
@@ -216,7 +216,7 @@ section {
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* 6. SECCIÓN PRODUCTOS - CATEGORÍAS (444px ancho, 667px alto) */
+/* 6. SECCIÓN PRODUCTOS - CATEGORÍAS (Proporción 2:3) */
 .categories-section {
     background-color: var(--color-gray-bg);
 }
@@ -234,17 +234,19 @@ section {
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding-bottom: var(--spacing-sm);
-    /* ANCHO MÁXIMO DE LA TARJETA COMPLETA */
-    max-width: 444px; 
-    margin: 0 auto; 
+    /* Modificado: Quitamos max-width aquí para que se adapte mejor al grid en móvil */
+    /* Lo centramos usando las propiedades del grid en móvil, si es necesario, 
+       o con un max-width y margin:auto en el grid si solo hay una columna */
+    max-width: 400px; /* Un tamaño razonable para la tarjeta en móvil, será sobrescrito en escritorio */
+    margin: 0 auto;
 }
 
 .category-card img {
-    /* DIMENSIONES DE IMAGEN */
+    /* AJUSTADO: Usaremos el padding-top para mantener la proporción 2:3 */
     width: 100%; 
-    max-width: 444px; 
-    height: 667px; /* ALTURA FIJA DE IMAGEN */
-    object-fit: cover;
+    height: 0; /* La altura será definida por el padding-top */
+    padding-top: 150%; /* 1000px alto / 667px ancho = 1.5 -> 150% */
+    object-fit: cover; /* Cambiado de nuevo a cover para llenar el espacio */
     margin-bottom: var(--spacing-sm);
 }
 
@@ -489,14 +491,22 @@ section {
 
     /* Categorías */
     .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas en escritorio */
         justify-items: center; 
     }
 
     .category-card {
         margin: 0; 
+        max-width: none; /* Quitamos max-width de la tarjeta para que el grid lo maneje */
     }
-    
+
+    .category-card img {
+        /* Para asegurar que cada imagen se ajuste al ancho de 667px / 1000px de la imagen original */
+        max-width: 100%; /* Asegura que no desborde si el contenedor es más pequeño */
+        height: auto; /* Dejar que la altura se ajuste automáticamente */
+        padding-top: 0; /* Desactivar el truco del padding-top en escritorio para mejor control */
+    }
+
     /* Asesores */
     .advisors-list {
         flex-direction: row;
