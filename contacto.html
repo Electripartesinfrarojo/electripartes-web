@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Electripartes Infrarojo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-fondo: #0a1931;
+            --azul-footer: #050c1a;
+            --blanco: #ffffff;
+            --gris-formulario: #444b54;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--azul-fondo);
+            color: var(--blanco);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--azul-fondo);
+        }
+        .logo img { height: 50px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 14px; }
+
+        /* --- SECCIÓN ASESORES --- */
+        .seccion-contacto {
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        .seccion-contacto h2 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .asesor-fila {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .asesor-nombre {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .btn-asesor {
+            background-color: #4c8bf5;
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+        /* --- FORMULARIO Y MAPA UNIDOS --- */
+        .contenedor-cotizacion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 1000px;
+            margin: 60px auto;
+            background-color: var(--gris-formulario);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .col-form { padding: 40px; text-align: left; }
+        .col-form h3 { font-size: 2rem; margin-top: 0; margin-bottom: 25px; font-weight: 700; }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .col-form label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; }
+        
+        .col-form input, .col-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 2px;
+            background-color: white;
+            color: #333;
+        }
+
+        .btn-entregar {
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            color: #333;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .col-mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            min-height: 450px;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--azul-footer);
+            padding: 40px 5%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { color: white; font-size: 22px; }
+
+        @media (max-width: 768px) {
+            .contenedor-cotizacion { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .asesor-nombre { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><img src="URL_DE_TU_LOGO" alt="Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+        </ul>
+    </nav>
+
+    <section class="seccion-contacto">
+        <h2>ASESORES DE VENTA</h2>
+
+        <div class="asesor-fila">
+            <span class="asesor-nombre">DANIELA PÉREZ</span>
+            <a href="https://wa.me/584145483400" target="_blank" class="btn-asesor">BOTÓN</a>
+        </div>
+
+        <div class="asesor-fila">
+            <span class="asesor-nombre">KEVIN PÉREZ</span>
+            <a href="#" target="_blank" class="btn-asesor">BOTÓN</a>
+        </div>
+
+        <div class="contenedor-cotizacion">
+            <div class="col-form">
+                <h3>Solicita tu cotización</h3>
+                <form>
+                    <div class="form-grid">
+                        <div>
+                            <label>Correo electrónico</label>
+                            <input type="email" placeholder="Introduzca una dirección de correo">
+                        </div>
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" placeholder="Introduce tu nombre">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Mensaje</label>
+                        <textarea rows="5" placeholder="Escriba su mensaje aquí..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-entregar">ENTREGAR</button>
+                </form>
+            </div>
+
+            <div class="col-mapa">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.314227361719!2d-69.3444005!3d10.0734001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8767ff4d3ba425%3A0xe355c30ffe01c75e!2sELECTRIPARTES%20INFRAROJO!5e0!3m2!1ses-419!2sve!4v1740336000000!5m2!1ses-419!2sve" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h4 style="margin:0;">Electripartes Infrarojo</h4>
+                <p style="font-size: 0.8rem; color: #ccc;">Comercializamos equipos de instrumentación, control, automatización y electricidad.</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/584145483400"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
