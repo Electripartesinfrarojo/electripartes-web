@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Electripartes Infrarojo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="imágenes/logotipo-infrarojo.png" alt="Logo" class="logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="nosotros.html">Nosotros</a>
+        </nav>
+    </header>
+
+    <section class="contacto-seccion">
+        <h2>ASESORES DE VENTA</h2>
+        <div class="asesores-lista">
+            <div class="asesor-fila">
+                <span>DANIELA PÉREZ</span>
+                <a href="https://wa.me/584120000000" target="_blank" class="btn-whatsapp">BOTÓN <i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="asesor-fila">
+                <span>KEVIN PÉREZ</span>
+                <a href="https://wa.me/584120000000" target="_blank" class="btn-whatsapp">BOTÓN <i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="contacto-contenedor">
+            <div class="formulario-caja">
+                <h3>Solicita tu cotización</h3>
+                <form>
+                    <div class="input-grupo">
+                        <label>Correo electrónico</label>
+                        <input type="email" placeholder="Introduce una dirección de correo">
+                    </div>
+                    <div class="input-grupo">
+                        <label>Nombre</label>
+                        <input type="text" placeholder="Introduce tu nombre">
+                    </div>
+                    <div class="input-grupo">
+                        <label>Mensaje</label>
+                        <textarea placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">ENTREGAR</button>
+                </form>
+            </div>
+
+            <div class="mapa-caja">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.123456789!2d-69.312345!3d10.061234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAzJzQwLjQiTiA2OcKwMTgnNDQuNCJX!5e0!3m2!1ses!2sve!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>© 2026 Electripartes Infrarojo. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
