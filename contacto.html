@@ -20,9 +20,8 @@
         input, textarea { width: 100%; margin: 10px 0 20px; padding: 12px; border-radius: 4px; border: none; }
         .btn-enviar { width: 100%; padding: 15px; background: white; font-weight: 900; cursor: pointer; border: none; }
         iframe { width: 100%; height: 100%; min-height: 450px; border: 0; }
-        footer { background: var(--azul-footer); padding: 40px 5%; }
-        .social-icons { display: flex; gap: 15px; font-size: 1.8rem; }
-        .social-icons a { color: white; }
+        footer { background: var(--azul-footer); padding: 40px 5%; border-top: 1px solid #333; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
     </style>
 </head>
 <body>
@@ -44,25 +43,38 @@
     <div class="container-form">
         <div class="form-side">
             <h2>Solicita tu cotización</h2>
-            <form id="formCotizar">
-                <input type="text" id="nom" placeholder="Tu Nombre" required>
-                <input type="email" id="em" placeholder="Tu Correo" required>
-                <textarea id="msg" rows="5" placeholder="¿Qué productos necesitas?" required></textarea>
-                <button type="button" onclick="enviarWA()" class="btn-enviar">ENVIAR A WHATSAPP</button>
-            </form>
+            <input type="text" id="nom" placeholder="Tu Nombre" required>
+            <input type="email" id="em" placeholder="Tu Correo" required>
+            <textarea id="msg" rows="5" placeholder="¿Qué productos necesitas?" required></textarea>
+            <button type="button" onclick="enviarWA()" class="btn-enviar">ENVIAR A WHATSAPP</button>
         </div>
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.256247738243!2d-69.3362153!3d10.0715364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87676766767677%3A0x7676767676767676!2sElectripartes%20Infrarojo!5e0!3m2!1ses!2sve!4v1700000000000"></iframe>
-        </div>
+        <div><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.3248386616616!2d-69.3496924!3d10.0724817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87676643900001%3A0xc6651915951d38e2!2sELECTRIPARTES%20INFRAROJO!5e0!3m2!1ses!2sve!4v1710000000000!5m2!1ses!2sve" allowfullscreen="" loading="lazy"></iframe></div>
     </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3 style="margin-top:0;">Electripartes Infrarojo</h3>
+                <p style="font-size:0.9rem;"><i class="fas fa-clock"></i> <b>Horario:</b><br>Lun - Vie: 8:00am - 12:00pm / 1:00pm - 4:30pm</p>
+            </div>
+            <div>
+                <p style="font-size:0.9rem;"><i class="fas fa-envelope"></i> ventas@electripartesinfrarojo.com</p>
+                <p style="font-size:0.9rem;"><i class="fas fa-phone"></i> +58 0414 548 3400</p>
+            </div>
+            <div style="text-align: right;">
+                <a href="https://wa.me/584145483400" target="_blank" style="color:#25d366; font-size:2rem;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script>
     function enviarWA() {
         const n = document.getElementById('nom').value;
         const e = document.getElementById('em').value;
         const m = document.getElementById('msg').value;
-        const url = `https://wa.me/584145483400?text=*Nueva Cotización*%0A*Nombre:* ${n}%0A*Correo:* ${e}%0A*Mensaje:* ${m}`;
-        window.open(url, '_blank');
+        if(n && e && m) {
+            window.open(`https://wa.me/584145483400?text=*Nueva Cotización*%0A*Nombre:* ${n}%0A*Correo:* ${e}%0A*Mensaje:* ${m}`, '_blank');
+        } else { alert("Rellena todos los campos"); }
     }
     </script>
 </body>
