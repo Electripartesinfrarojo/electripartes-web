@@ -16,14 +16,14 @@
         .asesor-seccion { padding: 40px 5%; text-align: center; }
         .asesor { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 20px auto; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px; }
         .btn-wa { background: var(--azul-boton); color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-        .btn-wa:hover { background: #357ebd; }
 
         .container-form { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 50px auto; background: #2c3e50; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .form-side { padding: 40px; text-align: left; }
-        input, textarea { width: 100%; margin: 10px 0; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; background: #ecf0f1; }
-        .btn-enviar { width: 100%; padding: 15px; background: white; color: #333; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        label { font-weight: bold; font-size: 0.9rem; }
+        input, textarea { width: 100%; margin: 10px 0 20px; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; background: #ecf0f1; font-family: inherit; }
+        .btn-enviar { width: 100%; padding: 15px; background: white; color: #333; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-enviar:hover { background: #4c8bf5; color: white; }
         
-        /* Contenedor del Mapa */
         .map-side { width: 100%; height: 100%; min-height: 450px; }
         iframe { width: 100%; height: 100%; border: 0; }
 
@@ -31,7 +31,6 @@
         .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         .social-icons { display: flex; gap: 15px; font-size: 1.8rem; }
         .social-icons a { color: white; transition: 0.3s; }
-        .social-icons a:hover { color: var(--azul-boton); }
 
         @media (max-width: 768px) { .container-form { grid-template-columns: 1fr; } }
     </style>
@@ -61,16 +60,22 @@
     <div class="container-form">
         <div class="form-side">
             <h2 style="font-size: 2rem; margin-top: 0; font-weight: 900;">Solicita tu cotización</h2>
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="Introduzca una dirección de correo">
-            <label>Nombre</label>
-            <input type="text" placeholder="Introduce tu nombre">
-            <label>Mensaje</label>
-            <textarea rows="5" placeholder="Escriba su mensaje aquí..."></textarea>
-            <button class="btn-enviar">ENTREGAR</button>
+            
+            <form id="cotizacionForm">
+                <label>Nombre</label>
+                <input type="text" id="clienteNombre" placeholder="Introduce tu nombre" required>
+                
+                <label>Correo electrónico</label>
+                <input type="email" id="clienteEmail" placeholder="Introduzca una dirección de correo" required>
+                
+                <label>Mensaje</label>
+                <textarea id="clienteMensaje" rows="5" placeholder="Escriba su mensaje aquí..." required></textarea>
+                
+                <button type="button" onclick="enviarCotizacion()" class="btn-enviar">ENTREGAR A WHATSAPP</button>
+            </form>
         </div>
         <div class="map-side">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.253683664326!2d-69.3453896!3d10.0775971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87679774653e0d%3A0x6a0c64c7e63b652c!2sElectripartes%20Infrarojo!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.243543948719!2d-69.33924732415175!3d10.07923867165038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8767f74d3b6a25%3A0xe355c30ffe01c75e!2sELECTRIPARTES%20INFRAROJO!5e0!3m2!1ses!2sve!4v1708800000000!5m2!1ses!2sve" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
@@ -87,5 +92,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    function enviarCotizacion() {
+        const nombre = document.getElementById('clienteNombre').value;
+        const email = document.getElementById('clienteEmail').value;
+        const mensaje = document.getElementById('clienteMensaje').value;
+        
+        // Puedes cambiar este número por el de Daniela o Kevin según prefieras
+        const numeroTelefono = "584145483400"; 
+
+        if(nombre && email && mensaje) {
+            const texto = `*SOLICITUD DE COTIZACIÓN*%0A%0A` +
+                          `*Nombre:* ${nombre}%0A` +
+                          `*Correo:* ${email}%0A` +
+                          `*Mensaje:* ${mensaje}`;
+            
+            const url = `https://wa.me/${numeroTelefono}?text=${texto}`;
+            window.open(url, '_blank');
+        } else {
+            alert("Por favor, rellene todos los campos del formulario.");
+        }
+    }
+    </script>
 </body>
 </html>
