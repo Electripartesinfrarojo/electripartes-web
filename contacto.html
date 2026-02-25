@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --azul: #0a1931; --azul-footer: #050c1a; }
+        :root { --azul: #0a1931; --azul-footer: #050c1a; --azul-boton: #4c8bf5; }
         body { margin: 0; font-family: 'Roboto', sans-serif; background: var(--azul); color: white; }
         nav { display: flex; justify-content: space-between; padding: 20px 5%; align-items: center; }
         .logo img { height: 50px; }
@@ -15,19 +15,23 @@
 
         .asesor-seccion { padding: 40px 5%; text-align: center; }
         .asesor { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 20px auto; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px; }
-        .btn-wa { background: #4c8bf5; color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        .btn-wa { background: var(--azul-boton); color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .btn-wa:hover { background: #357ebd; }
 
-        .container-form { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 50px auto; background: #444b54; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .container-form { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 50px auto; background: #2c3e50; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .form-side { padding: 40px; text-align: left; }
-        input, textarea { width: 100%; margin: 10px 0; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; }
-        .btn-enviar { width: 100%; padding: 15px; background: white; color: #333; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; }
-        iframe { width: 100%; height: 100%; border: 0; min-height: 450px; }
+        input, textarea { width: 100%; margin: 10px 0; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; background: #ecf0f1; }
+        .btn-enviar { width: 100%; padding: 15px; background: white; color: #333; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        
+        /* Contenedor del Mapa */
+        .map-side { width: 100%; height: 100%; min-height: 450px; }
+        iframe { width: 100%; height: 100%; border: 0; }
 
         footer { background: var(--azul-footer); padding: 40px 5%; border-top: 1px solid #333; }
         .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         .social-icons { display: flex; gap: 15px; font-size: 1.8rem; }
         .social-icons a { color: white; transition: 0.3s; }
-        .social-icons a:hover { color: #4c8bf5; }
+        .social-icons a:hover { color: var(--azul-boton); }
 
         @media (max-width: 768px) { .container-form { grid-template-columns: 1fr; } }
     </style>
@@ -43,14 +47,20 @@
     </nav>
     
     <div class="asesor-seccion">
-        <h1 style="letter-spacing: 2px;">ASESORES DE VENTA</h1>
-        <div class="asesor"><span>DANIELA PÉREZ</span> <a href="https://wa.me/584145483400" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a></div>
-        <div class="asesor"><span>KEVIN PÉREZ</span> <a href="https://wa.me/584120000000" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a></div>
+        <h1 style="letter-spacing: 2px; font-weight: 900;">ASESORES DE VENTA</h1>
+        <div class="asesor">
+            <span style="font-weight: bold; font-size: 1.2rem;">DANIELA PÉREZ</span> 
+            <a href="https://wa.me/584145483400" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="asesor">
+            <span style="font-weight: bold; font-size: 1.2rem;">KEVIN PÉREZ</span> 
+            <a href="https://wa.me/584145487771" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a>
+        </div>
     </div>
 
     <div class="container-form">
         <div class="form-side">
-            <h2 style="font-size: 2rem; margin-top: 0;">Solicita tu cotización</h2>
+            <h2 style="font-size: 2rem; margin-top: 0; font-weight: 900;">Solicita tu cotización</h2>
             <label>Correo electrónico</label>
             <input type="email" placeholder="Introduzca una dirección de correo">
             <label>Nombre</label>
@@ -59,8 +69,8 @@
             <textarea rows="5" placeholder="Escriba su mensaje aquí..."></textarea>
             <button class="btn-enviar">ENTREGAR</button>
         </div>
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.172421376043!2d-69.3444853!3d10.0847119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8767f74d3ba225%3A0xe355c30fbe01c75e!2sELECTRIPARTES%20INFRAROJO!5e0!3m2!1ses!2sve!4v1708800000000!5m2!1ses!2sve"></iframe>
+        <div class="map-side">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.253683664326!2d-69.3453896!3d10.0775971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87679774653e0d%3A0x6a0c64c7e63b652c!2sElectripartes%20Infrarojo!5e0!3m2!1ses!2sve!4v1700000000000!5m2!1ses!2sve" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 
