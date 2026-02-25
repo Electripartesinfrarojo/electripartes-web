@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Contacto | Electripartes Infrarojo</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,27 +13,16 @@
         .logo img { height: 50px; }
         .nav-links { list-style: none; display: flex; gap: 20px; }
         .nav-links a { color: white; text-decoration: none; font-weight: bold; }
-
-        .asesor-seccion { padding: 40px 5%; text-align: center; }
         .asesor { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 20px auto; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px; }
-        .btn-wa { background: var(--azul-boton); color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-
-        .container-form { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 50px auto; background: #2c3e50; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .form-side { padding: 40px; text-align: left; }
-        label { font-weight: bold; font-size: 0.9rem; }
-        input, textarea { width: 100%; margin: 10px 0 20px; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; background: #ecf0f1; font-family: inherit; }
-        .btn-enviar { width: 100%; padding: 15px; background: white; color: #333; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
-        .btn-enviar:hover { background: #4c8bf5; color: white; }
-        
-        .map-side { width: 100%; height: 100%; min-height: 450px; }
-        iframe { width: 100%; height: 100%; border: 0; }
-
-        footer { background: var(--azul-footer); padding: 40px 5%; border-top: 1px solid #333; }
-        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .btn-wa { background: var(--azul-boton); color: white; padding: 10px 25px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        .container-form { display: grid; grid-template-columns: 1fr 1fr; max-width: 1000px; margin: 50px auto; background: #2c3e50; border-radius: 8px; overflow: hidden; }
+        .form-side { padding: 40px; }
+        input, textarea { width: 100%; margin: 10px 0 20px; padding: 12px; border-radius: 4px; border: none; }
+        .btn-enviar { width: 100%; padding: 15px; background: white; font-weight: 900; cursor: pointer; border: none; }
+        iframe { width: 100%; height: 100%; min-height: 450px; border: 0; }
+        footer { background: var(--azul-footer); padding: 40px 5%; }
         .social-icons { display: flex; gap: 15px; font-size: 1.8rem; }
-        .social-icons a { color: white; transition: 0.3s; }
-
-        @media (max-width: 768px) { .container-form { grid-template-columns: 1fr; } }
+        .social-icons a { color: white; }
     </style>
 </head>
 <body>
@@ -45,74 +35,34 @@
         </ul>
     </nav>
     
-    <div class="asesor-seccion">
-        <h1 style="letter-spacing: 2px; font-weight: 900;">ASESORES DE VENTA</h1>
-        <div class="asesor">
-            <span style="font-weight: bold; font-size: 1.2rem;">DANIELA PÉREZ</span> 
-            <a href="https://wa.me/584145483400" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div class="asesor">
-            <span style="font-weight: bold; font-size: 1.2rem;">KEVIN PÉREZ</span> 
-            <a href="https://wa.me/584145487771" target="_blank" class="btn-wa">BOTÓN <i class="fab fa-whatsapp"></i></a>
-        </div>
+    <div style="text-align:center; padding: 20px;">
+        <h1 style="font-weight: 900;">ASESORES DE VENTA</h1>
+        <div class="asesor"><span>DANIELA PÉREZ</span> <a href="https://wa.me/584145483400" target="_blank" class="btn-wa">WHATSAPP</a></div>
+        <div class="asesor"><span>KEVIN PÉREZ</span> <a href="https://wa.me/584145487771" target="_blank" class="btn-wa">WHATSAPP</a></div>
     </div>
 
     <div class="container-form">
         <div class="form-side">
-            <h2 style="font-size: 2rem; margin-top: 0; font-weight: 900;">Solicita tu cotización</h2>
-            
-            <form id="cotizacionForm">
-                <label>Nombre</label>
-                <input type="text" id="clienteNombre" placeholder="Introduce tu nombre" required>
-                
-                <label>Correo electrónico</label>
-                <input type="email" id="clienteEmail" placeholder="Introduzca una dirección de correo" required>
-                
-                <label>Mensaje</label>
-                <textarea id="clienteMensaje" rows="5" placeholder="Escriba su mensaje aquí..." required></textarea>
-                
-                <button type="button" onclick="enviarCotizacion()" class="btn-enviar">ENTREGAR A WHATSAPP</button>
+            <h2>Solicita tu cotización</h2>
+            <form id="formCotizar">
+                <input type="text" id="nom" placeholder="Tu Nombre" required>
+                <input type="email" id="em" placeholder="Tu Correo" required>
+                <textarea id="msg" rows="5" placeholder="¿Qué productos necesitas?" required></textarea>
+                <button type="button" onclick="enviarWA()" class="btn-enviar">ENVIAR A WHATSAPP</button>
             </form>
         </div>
-        <div class="map-side">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.243543948719!2d-69.33924732415175!3d10.07923867165038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8767f74d3b6a25%3A0xe355c30ffe01c75e!2sELECTRIPARTES%20INFRAROJO!5e0!3m2!1ses!2sve!4v1708800000000!5m2!1ses!2sve" allowfullscreen="" loading="lazy"></iframe>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.256247738243!2d-69.3362153!3d10.0715364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87676766767677%3A0x7676767676767676!2sElectripartes%20Infrarojo!5e0!3m2!1ses!2sve!4v1700000000000"></iframe>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div>
-                <h3 style="margin:0;">Electripartes Infrarojo</h3>
-                <p style="color: #ccc; font-size: 0.9rem;">Comercializamos equipos de instrumentación, control, automatización y electricidad.</p>
-            </div>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/electripartes.infrarojo" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/electripartes?igsh=MWYwdHg0dWE4d2Vrdg==" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/584145483400" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
     <script>
-    function enviarCotizacion() {
-        const nombre = document.getElementById('clienteNombre').value;
-        const email = document.getElementById('clienteEmail').value;
-        const mensaje = document.getElementById('clienteMensaje').value;
-        
-        // Puedes cambiar este número por el de Daniela o Kevin según prefieras
-        const numeroTelefono = "584145483400"; 
-
-        if(nombre && email && mensaje) {
-            const texto = `*SOLICITUD DE COTIZACIÓN*%0A%0A` +
-                          `*Nombre:* ${nombre}%0A` +
-                          `*Correo:* ${email}%0A` +
-                          `*Mensaje:* ${mensaje}`;
-            
-            const url = `https://wa.me/${numeroTelefono}?text=${texto}`;
-            window.open(url, '_blank');
-        } else {
-            alert("Por favor, rellene todos los campos del formulario.");
-        }
+    function enviarWA() {
+        const n = document.getElementById('nom').value;
+        const e = document.getElementById('em').value;
+        const m = document.getElementById('msg').value;
+        const url = `https://wa.me/584145483400?text=*Nueva Cotización*%0A*Nombre:* ${n}%0A*Correo:* ${e}%0A*Mensaje:* ${m}`;
+        window.open(url, '_blank');
     }
     </script>
 </body>
