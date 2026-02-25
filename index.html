@@ -7,8 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --azul: #0a1931; --blanco: #ffffff; }
+        :root { --azul: #0a1931; --blanco: #ffffff; --azul-boton: #4c8bf5; }
         body { margin: 0; font-family: 'Roboto', sans-serif; background-color: var(--azul); color: white; }
+        
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; }
         .logo img { height: 60px; }
         .nav-links { list-style: none; display: flex; gap: 20px; }
@@ -20,19 +21,44 @@
             background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero h1 { font-size: 3rem; font-weight: 900; padding: 0 10%; }
+        .hero h1 { font-size: 3rem; font-weight: 900; padding: 0 10%; margin: 0; }
 
-        .catalogo-titulo { text-align: center; margin: 40px 0; font-size: 2.5rem; }
-        .grid-productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 0 5% 50px; }
-        .card img { width: 100%; border-radius: 5px; transition: 0.3s; }
-        .card img:hover { transform: scale(1.05); }
+        .catalogo-titulo { text-align: center; margin: 40px 0; font-size: 2.5rem; font-weight: 900; }
+        
+        .grid-productos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            padding: 0 5% 50px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+        
+        .card { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .card img { width: 100%; border-radius: 5px; transition: 0.3s; margin-bottom: 15px; }
+        .card img:hover { transform: scale(1.03); }
 
-        footer { background: #050c1a; padding: 30px 5%; border-top: 1px solid #333; text-align: center; }
+        .btn-ir { 
+            background-color: var(--azul-boton); 
+            color: white; 
+            text-decoration: none; 
+            padding: 10px 40px; 
+            border-radius: 2px; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-ir:hover { background-color: #357ebd; }
+
+        footer { background: #050c1a; padding: 40px 5%; border-top: 1px solid #333; text-align: left; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .social-icons { display: flex; gap: 15px; font-size: 1.5rem; }
+        .social-icons a { color: white; }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo"><img src="img/logo.png" alt="Logo"></div>
+        <div class="logo"><img src="img/logo.png" alt="Logo Infrarojo"></div>
         <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="contacto.html">Contacto</a></li>
@@ -45,15 +71,42 @@
     </section>
 
     <h2 class="catalogo-titulo">Catalogo De Productos</h2>
+    
     <div class="grid-productos">
-        <div class="card"><img src="img/maniobra.png" alt="Maniobra"></div>
-        <div class="card"><img src="img/medicion.png" alt="Medicion"></div>
-        <div class="card"><img src="img/herramientas.png" alt="Herramientas"></div>
-        <div class="card"><img src="img/control.png" alt="Automatizacion"></div>
+        <div class="card">
+            <img src="img/maniobra.png" alt="Maniobra">
+            <a href="https://www.catalogoindustrial.net/CI/" target="_blank" class="btn-ir">IR</a>
+        </div>
+
+        <div class="card">
+            <img src="img/medicion.png" alt="Medicion">
+            <a href="https://www.catalogoindustrial.net/BI/" target="_blank" class="btn-ir">IR</a>
+        </div>
+
+        <div class="card">
+            <img src="img/herramientas.png" alt="Herramientas">
+            <a href="https://www.catalogoindustrial.net/C92/" target="_blank" class="btn-ir">IR</a>
+        </div>
+
+        <div class="card">
+            <img src="img/control.png" alt="Automatizacion y Control">
+            <a href="https://www.catalogoindustrial.net/2/" target="_blank" class="btn-ir">IR</a>
+        </div>
     </div>
 
     <footer>
-        <p>Electripartes Infrarojo - Carrera 18 con Calle 49, Barquisimeto.</p>
+        <div class="footer-content">
+            <div>
+                <h3 style="margin:0;">Electripartes Infrarojo</h3>
+                <p style="color: #ccc; font-size: 0.9rem;">Comercializamos equipos de instrumentación, control, automatización y electricidad...</p>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/584145483400"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 30px;">© 2026 Electripartes Infrarojo. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
